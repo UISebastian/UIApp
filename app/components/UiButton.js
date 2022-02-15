@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet,TouchableHighlight } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {FocusContext, Button} from 'react-native-tvfocus';
+import {useIsFocused} from '@react-navigation/native';
 
 
 import colors from '../config/colors';
 import UiText from './UiText';
-import { } from 'react-native-web';
+
 
 
 
@@ -17,21 +19,22 @@ const onFocus = () => setFocus(true);
     
 
 const onBlur = () => setFocus(false);
-    
+const active = useIsFocused();    
 
 
 
     return (
-        <TouchableHighlight style={[styles.button, focus ? styles.focusedbutton : null]} onFocus={onFocus} onBlur={onBlur} onPress={() => navigation.navigate(navigateTo)}>
+        <FocusContext active={active} >
+
+        <Button title={title} style={styles.button} onPress={() => navigation.navigate(navigateTo)}>
             
       
 
-        <UiText>
-            {title}
-        </UiText>
+      
 
     
-        </TouchableHighlight>
+        </Button>
+        </FocusContext>
         
     );
 }
