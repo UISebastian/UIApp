@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, TouchableNativeFeedback, View } from 'react-native';
 import {FocusContext} from 'react-native-tvfocus';
 import {useIsFocused} from '@react-navigation/native';
 
@@ -16,6 +16,7 @@ import UiLogo from '../components/UiLogo';
 function WelcomeScreen({navigation}) {
     
     const active = useIsFocused();
+    
 
     
 
@@ -24,7 +25,10 @@ function WelcomeScreen({navigation}) {
 
        <View style={styles.background}>
            <View style={styles.logocontainer}>
+                
                 <UiLogo/>
+
+                
            </View>
            
 
@@ -32,7 +36,7 @@ function WelcomeScreen({navigation}) {
            
         <View style={styles.buttoncontainer}>
 
-        <UiButton title='GELDANLAGE NEU ERLEBEN!' navigateTo={'Menu'} />         
+        <UiButton hasTVPreferredFocus={true} title='GELDANLAGE NEU ERLEBEN!' navigateTo={'Menu'} />         
         </View>
        
         
@@ -68,6 +72,8 @@ buttoncontainer:{
     position: 'absolute',
     top: 400,
     alignItems:"center",
+    overflow:"hidden",
+    borderRadius:25,
 },     
 })
 

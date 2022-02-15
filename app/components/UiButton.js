@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import { StyleSheet,TouchableHighlight } from 'react-native';
+import React, {useCallback, useState} from 'react';
+import { StyleSheet, TouchableNativeFeedback, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {FocusContext, Button} from 'react-native-tvfocus';
+import {FocusContext, Button, TouchableHighlight, Pressable, TouchableOpacity} from 'react-native-tvfocus';
 import {useIsFocused} from '@react-navigation/native';
 
 
@@ -11,30 +11,37 @@ import UiText from './UiText';
 
 
 
-function UiButton({title, navigateTo}) {
+function UiButton({title, navigateTo, hasTVPreferredFocus}) {
+
+ const [focus, setFocus] = useState(false);
     
 const navigation = useNavigation();
-const [focus, setFocus] = useState(false);
-const onFocus = () => setFocus(true);
-    
-
-const onBlur = () => setFocus(false);
 const active = useIsFocused();    
 
 
 
     return (
-        <FocusContext active={active} >
+        
+          <FocusContext active={active}>
 
-        <Button title={title} style={styles.button} onPress={() => navigation.navigate(navigateTo)}>
-            
+        <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={() => navigation.navigate(navigateTo)}>
+            <View style={styles.focusedbutton}>
+
+            <UiText>
+                {title}
+            </UiText>
+            </View>
+        </TouchableNativeFeedback>
+          </FocusContext>
+        
+           
       
 
       
 
     
-        </Button>
-        </FocusContext>
+        
+        
         
     );
 }

@@ -31,10 +31,10 @@ function AbschlussstreckeScreen() {
            <UiCard image={require("../assets/pexels-thirdman-5058925.jpg")} subTitle={'John Doe'} title={'Ihr Bankberater'}/>
            </View>
            <View style={styles.backbuttoncontainer}>
-               <UiButton title={'Zurück'} navigateTo={'Menu'}></UiButton>
+               <UiButton hasTVPreferredFocus={false} title={'Zurück'} navigateTo={'Menu'}></UiButton>
            </View>
            <View style={styles.continuebuttoncontainer}>
-               <UiButton title={'Weiter'} navigateTo={'EndeAbschlussstrecke'}></UiButton>
+               <UiButton hasTVPreferredFocus={true} title={'Weiter'} navigateTo={'EndeAbschlussstrecke'}></UiButton>
            </View>
        </View>
        
