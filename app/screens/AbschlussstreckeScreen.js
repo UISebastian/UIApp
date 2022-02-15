@@ -72,11 +72,9 @@ const styles = StyleSheet.create({
         top: 100
     },
     calendar:{
-        todayBackgroundColor: colors.primary,
-        todayTextColor: colors.white,
-        arrowColor: colors.primary,
-        selectedDayBackgroundColor: colors.secondary
-
+        backgroundColor: colors.primary,
+        color: colors.white,
+       
     },
     continuebuttoncontainer:{
         width: "100%",

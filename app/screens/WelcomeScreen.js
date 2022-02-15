@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import {FocusContext} from 'react-native-tvfocus';
+import {useIsFocused} from '@react-navigation/native';
 
 
 
@@ -13,10 +15,13 @@ import UiLogo from '../components/UiLogo';
 
 function WelcomeScreen({navigation}) {
     
+    const active = useIsFocused();
 
     
 
     return (
+    <FocusContext active={active}>
+
        <View style={styles.background}>
            <View style={styles.logocontainer}>
                 <UiLogo/>
@@ -32,6 +37,7 @@ function WelcomeScreen({navigation}) {
        
         
        </View>
+    </FocusContext>
     );
 }
 
