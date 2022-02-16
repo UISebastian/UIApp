@@ -1,7 +1,10 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { LocaleConfig } from 'react-native-calendars';
+import { FocusContext } from 'react-native-tvfocus';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import colors from '../config/colors';
 import UiSideBar from '../components/UiSideBar';
@@ -13,8 +16,28 @@ import UiText from '../components/UiText';
 
 
 function AbschlussstreckeScreen() {
+
+    const active = useIsFocused();
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+      };
+    
+      const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+      };
+    
+      const handleConfirm = (date) => {
+        alert("A date has been picked: ", {date} );
+        hideDatePicker();
+      };
+
     return (
+        <FocusContext active={active}>
+
        <View style={styles.container}>
+
            <UiSideBar/>
            <View style={styles.titleContainer}>
 
@@ -22,10 +45,14 @@ function AbschlussstreckeScreen() {
            Jetz bequem einen Termin mit Ihrem Bankberater vereinbaren!
            </UiText>
            </View>
+           <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.black,false,60)} >
            <View style={styles.calendarcontainer}>
 
-           <Calendar theme={styles.calendar}/>
+           <DateTimePickerModal isVisible={isDatePickerVisible} mode="datetime"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}/>
            </View>
+           </TouchableNativeFeedback>
            <View style={styles.cardcontainer}>
 
            <UiCard image={require("../assets/pexels-thirdman-5058925.jpg")} subTitle={'John Doe'} title={'Ihr Bankberater'}/>
@@ -37,6 +64,7 @@ function AbschlussstreckeScreen() {
                <UiButton hasTVPreferredFocus={true} title={'Weiter'} navigateTo={'EndeAbschlussstrecke'}></UiButton>
            </View>
        </View>
+        </FocusContext>
        
     );
 }

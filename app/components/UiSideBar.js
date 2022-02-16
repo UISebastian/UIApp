@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableNativeFeedback } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { FocusContext } from 'react-native-tvfocus';
 
 import sparschweinXML from '../assets/Xml/sparschweinXml';
 import telefonhoererXML from '../assets/Xml/telefonhoererXml';
@@ -9,18 +10,30 @@ import colors from '../config/colors';
 
 function UiSideBar() {
 const navigation = useNavigation();
+const active = useIsFocused(); 
 
     return (
+        
+
+        <FocusContext active={active}>
+
         <View style={styles.background}>
-            <TouchableOpacity style={styles.iconcontainer} onPress={() => navigation.navigate('Abschlussstrecke')}>
+            <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(colors.white,false,20)}  onPress={() => navigation.navigate('Abschlussstrecke')} >
+               
+
                 <SvgXml xml={sparschweinXML} style={styles.icons}/>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.iconcontainer} onPress={() => navigation.navigate('Beratung')}>
+                
+            </TouchableNativeFeedback>
+            <TouchableNativeFeedback   background={TouchableNativeFeedback.Ripple(colors.white,false,20)}  onPress={() => navigation.navigate('Beratung')} >
+                
 
             <SvgXml xml={telefonhoererXML} style={styles.icons}/>
-            </TouchableOpacity>
+               
+            </TouchableNativeFeedback>
             
           </View>
+        </FocusContext>
+        
         
     );
 }
@@ -40,7 +53,9 @@ const styles = StyleSheet.create({
     },
 
     icons:{
-        flex:1
+        flex:1,
+        
+        
     },
     
 });
