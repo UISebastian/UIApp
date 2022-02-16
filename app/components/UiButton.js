@@ -13,7 +13,7 @@ import UiText from './UiText';
 
 function UiButton({title, navigateTo, hasTVPreferredFocus}) {
 
- const [focus, setFocus] = useState(false);
+ 
     
 const navigation = useNavigation();
 const active = useIsFocused();    
