@@ -6,7 +6,7 @@ import {useIsFocused} from '@react-navigation/native';
 
 
 import colors from '../config/colors';
-import UiButton from '../components/UiButton';
+import UiButton from '../components/Buttons/UiButton';
 import UiLogo from '../components/UiLogo';
 
 

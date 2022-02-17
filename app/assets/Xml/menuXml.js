@@ -1,0 +1,3 @@
+const menuXml =`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#00358e" d="M21 17h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1v0h18c0.552 0 1-0.448 1-1s-0.448-1-1-1v0z"/><path fill="#00358e" d="M21 11h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1v0h18c0.552 0 1-0.448 1-1s-0.448-1-1-1v0z"/><path fill="#00358e" d="M21 5h-18c-0.552 0-1 0.448-1 1s0.448 1 1 1v0h18c0.552 0 1-0.448 1-1s-0.448-1-1-1v0z"/></svg>`;
+
+export default menuXml;

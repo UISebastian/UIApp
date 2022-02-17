@@ -10,7 +10,7 @@ import colors from '../config/colors';
 import UiSideBar from '../components/UiSideBar';
 import calendarconfig from '../config/Calendarconfig';
 import UiCard from '../components/UiCard';
-import UiButton from '../components/UiButton';
+import UiButton from '../components/Buttons/UiButton';
 import UiText from '../components/UiText';
 
 

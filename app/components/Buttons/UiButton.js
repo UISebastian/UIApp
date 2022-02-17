@@ -5,8 +5,8 @@ import {FocusContext, Button, TouchableHighlight, Pressable, TouchableOpacity} f
 import {useIsFocused} from '@react-navigation/native';
 
 
-import colors from '../config/colors';
-import UiText from './UiText';
+import colors from '../../config/colors';
+import UiText from '../UiText';
 
 
 
