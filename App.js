@@ -10,6 +10,7 @@ import MenuScreen from './app/screens/MenuScreen';
 import AbschlussstreckeScreen from './app/screens/AbschlussstreckeScreen';
 import BeratungsScreen from './app/screens/BeratungsScreen';
 import EndeAbschlussstreckeScreen from './app/screens/EndeAbschlussstreckeScreen';
+import PlzTextInputScreen from './app/screens/PlzTextInputScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
        <Stack.Screen name ='Abschlussstrecke' options={{headerShown:false}}  component={AbschlussstreckeScreen}/>
        <Stack.Screen name ='Beratung' options={{headerShown:false}}  component={BeratungsScreen}/>
        <Stack.Screen name= 'EndeAbschlussstrecke' options={{headerShown:false}} component={EndeAbschlussstreckeScreen}/>
+       <Stack.Screen name='Plz' options={{headerShown:false}} component={PlzTextInputScreen}/>
      </Stack.Navigator>
     </NavigationContainer>
   );
