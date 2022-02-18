@@ -14,7 +14,7 @@ import SideBarButton from './Buttons/SideBarButton';
 const DATA =[{
     id: 0,
     text: "Individuelle Beratung",
-    navigateTo: 'Abschlussstrecke',
+    navigateTo: 'Plz',
     style: {
 
         width:130,
