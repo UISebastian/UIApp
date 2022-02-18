@@ -20,6 +20,7 @@ const DATA =[{
         width:50,
         height:50,
         left: 20,
+        alignContent:"center"
     },
     xml: sparschweinXML
 },
@@ -32,6 +33,7 @@ const DATA =[{
         width:50,
         height:50,
         left: 20,
+        alignContent:"center"
     },
     xml: leftArrowXml
 },
@@ -44,10 +46,15 @@ const DATA =[{
         width:50,
         height:50,
         left: 20,
+        alignContent:"center"
     },
     xml: telefonhoererXML
 },
 ];
+
+const Item = ({item, onPress}) => (
+    <SideBarButton text={item.text} style={item.style} xml={item.xml} onPress={onPress}/>
+);
 
 function UiSideBar() {
 const navigation = useNavigation();
@@ -55,15 +62,22 @@ const active = useIsFocused();
 const drawer = useRef(null);
 const [drawerPosition, setDrawerPosition] = useState("left");
 
-const renderItem = ({text, onPress, style, xml}) => (
-    <SideBarButton text={text} style={style} xml={xml} onPress={onPress}/>
-);
+const renderItem = ({item}) => {
+    return(
+        <Item item={item}
+        onPress={() =>{ if(item.navigateTo ===''){drawer.current.closeDrawer()}
+    else{
+        navigation.navigate(item.navigateTo)
+    }}}/>
+    );
+};
 
 const navigationView = () => (
     <TouchableNativeFeedback>
-        <FlatList data={DATA}
+        <FlatList contentContainerStyle={styles.background}  data={DATA}
         renderItem={renderItem}
-        keyExtractor={renderItem => renderItem.id}/>
+        keyExtractor={(item) => item.id}
+        initialNumToRender={DATA.length}/>
     </TouchableNativeFeedback>
 
 
@@ -78,7 +92,7 @@ const navigationView = () => (
             
             <TouchableNativeFeedback>
 
-            <DrawerLayoutAndroid ref={drawer} drawerWidth={100}
+            <DrawerLayoutAndroid ref={drawer} drawerWidth={styles.background.width}
             drawerPosition={drawerPosition}
             renderNavigationView={navigationView}>
                 <View style={styles.container}>
@@ -101,7 +115,7 @@ const navigationView = () => (
 const styles = StyleSheet.create({
     background:{
         backgroundColor: colors.primary,
-        width:100,
+        width:220,
         height:"100%",
         justifyContent:"space-evenly"
     },
@@ -117,6 +131,8 @@ const styles = StyleSheet.create({
         width:50,
         height:50,
         left: 20,
+        
+        
     },
 
     icons:{
