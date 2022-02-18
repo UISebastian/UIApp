@@ -11,14 +11,14 @@ function SideBarButton({ text,style, xml, onPress}) {
     
 
     return (
-        <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={onPress}>
-        <View style={style}>
-            <SvgXml xml={xml}/>
+        <View style={[style, text ==='' ? styles.buttonWithOutText : null]}>
+            <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(colors.white,false,20)} onPress={onPress}>
+            <SvgXml style={{position:"relative", left:-30}} xml={xml}/>
+    </TouchableNativeFeedback>
             <UiText style={styles.text}>
-            {text}
+                {text}
             </UiText>
         </View>
-    </TouchableNativeFeedback>
             
         
     );
@@ -27,6 +27,22 @@ function SideBarButton({ text,style, xml, onPress}) {
 const styles = StyleSheet.create({
     text:{
         fontSize: 10,
+        position:'relative',
+        left: 70,
+        bottom: 25,
+        textAlign:"right",
+        
+        
+        
+    },
+    buttonWithOutText:{
+        width:20,
+        height:20,
+        left: 230,
+        alignContent:"center",
+        position:"relative",
+        
+
     },
 
 })

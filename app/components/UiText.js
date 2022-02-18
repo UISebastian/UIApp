@@ -5,7 +5,7 @@ import colors from '../config/colors';
 
 function UiText({children, style}) {
     return (
-        <Text style ={[styles.text, style]}>
+        <Text numberOfLines={1}  style ={[styles.text, style]}>
             {children}
         </Text>
     );

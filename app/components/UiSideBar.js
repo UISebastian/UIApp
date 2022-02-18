@@ -17,10 +17,12 @@ const DATA =[{
     navigateTo: 'Abschlussstrecke',
     style: {
 
-        width:50,
+        width:130,
         height:50,
         left: 20,
-        alignContent:"center"
+        alignContent:"center",
+        
+        
     },
     xml: sparschweinXML
 },
@@ -43,7 +45,7 @@ const DATA =[{
     navigateTo:'',
     style: {
 
-        width:50,
+        width:130,
         height:50,
         left: 20,
         alignContent:"center"
@@ -115,7 +117,7 @@ const navigationView = () => (
 const styles = StyleSheet.create({
     background:{
         backgroundColor: colors.primary,
-        width:220,
+        width:250,
         height:"100%",
         justifyContent:"space-evenly"
     },
@@ -131,6 +133,8 @@ const styles = StyleSheet.create({
         width:50,
         height:50,
         left: 20,
+        
+        
         
         
     },
