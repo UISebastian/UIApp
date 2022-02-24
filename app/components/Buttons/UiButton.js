@@ -11,7 +11,7 @@ import UiText from '../UiText';
 
 
 
-function UiButton({title, navigateTo, hasTVPreferredFocus}) {
+function UiButton({title, navigateTo, hasTVPreferredFocus, ref}) {
 
  
     
@@ -24,7 +24,7 @@ const active = useIsFocused();
         
           <FocusContext active={active}>
 
-        <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={() => navigation.navigate(navigateTo)}>
+        <TouchableNativeFeedback ref={ref}  background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={() => navigation.navigate(navigateTo)}>
             <View style={styles.focusedbutton}>
 
             <UiText>
