@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
-import { Calendar } from 'react-native-calendars';
-import { LocaleConfig } from 'react-native-calendars';
+import { useNavigation } from '@react-navigation/native';
 import { FocusContext } from 'react-native-tvfocus';
 import {  useIsFocused } from '@react-navigation/native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -21,6 +20,7 @@ function AbschlussstreckeScreen() {
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [isDatePicked, setDatePicked] = useState(false);
     const [date, setDate] = useState("");
+    const navigation = useNavigation();
    
 
     const showDatePicker = () => {
@@ -68,7 +68,14 @@ function AbschlussstreckeScreen() {
       }
 
       const NavigationButton = () => {
-           return( <UiButton hasTVPreferredFocus={false} title={'Zu Ihrer Termin Bestätigung'} navigateTo={'EndeAbschlussstrecke'}></UiButton>);
+           return( <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={() => navigation.navigate('EndeAbschlussstrecke',{date:date}) }>
+           <View style={styles.focusedbutton}>
+   
+               <UiText>
+                   Zu Ihrem Termin
+               </UiText>
+           </View>
+          </TouchableNativeFeedback>);
       }
 
     return (
