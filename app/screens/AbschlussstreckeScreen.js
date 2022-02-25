@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         position:'absolute',
-        left: '45%',
+        left: '40%',
         top: 100
     },
     container: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         height:70,
         position: 'absolute',
         top: 450,
-        left:500,
+        left:'35%',
     },
     focusedbutton:{
         backgroundColor: colors.secondary,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
         position: 'absolute',
         top: 25,
-        left: 300
+        left: '25%'
 
     },
 
