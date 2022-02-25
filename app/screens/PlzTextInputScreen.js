@@ -45,7 +45,7 @@ const endEditing = () => {
                 <UiButton hasTVPreferredFocus={false} title={'Zurück'} navigateTo={'Menu'}></UiButton>
             </View>
             <View style={styles.forwardbuttonContainer}>
-                <UiButton  hasTVPreferredFocus={false} title={'Zu Ihrem Berater'} navigateTo={'EndeAbschlussstrecke'}></UiButton>
+                <UiButton  hasTVPreferredFocus={false} title={'Zu Ihrem Berater'} navigateTo={'Abschlussstrecke'}></UiButton>
             </View>
             
         </View>

@@ -1,27 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { LocaleConfig } from 'react-native-calendars';
 import { FocusContext } from 'react-native-tvfocus';
-import { useNavigation, useIsFocused } from '@react-navigation/native';
+import {  useIsFocused } from '@react-navigation/native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import colors from '../config/colors';
 import UiSideBar from '../components/UiSideBar';
 import calendarconfig from '../config/Calendarconfig';
 import UiCard from '../components/UiCard';
-import UiButton from '../components/Buttons/UiButton';
 import UiText from '../components/UiText';
+import UiButton from '../components/Buttons/UiButton';
 
 
 
 function AbschlussstreckeScreen() {
 
     const active = useIsFocused();
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [isDatePicked, setDatePicked] = useState(false);
+    const [date, setDate] = useState("");
+   
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
+        
       };
     
       const hideDatePicker = () => {
@@ -29,9 +33,43 @@ function AbschlussstreckeScreen() {
       };
     
       const handleConfirm = (date) => {
-        alert("A date has been picked: ", {date} );
+        setDate(date);
         hideDatePicker();
+        setDatePicked(true);
+        console.log(date);
       };
+
+      const DatePickerButton = () => {
+
+        
+          return(
+        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,120)} onPress={showDatePicker}>
+        <View style={styles.focusedbutton}>
+
+            <UiText>
+                Jetzt einen Termin vereinbaren!
+            </UiText>
+        </View>
+       </TouchableNativeFeedback>
+          );
+      }
+
+      const DatePicker = () =>{
+          return(
+            <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.black,false,60)} >
+            <View style={styles.calendarcontainer}>
+ 
+            <DateTimePickerModal isVisible={isDatePickerVisible} mode="datetime"
+         onConfirm={handleConfirm}
+         onCancel={hideDatePicker}/>
+            </View>
+            </TouchableNativeFeedback>
+          );
+      }
+
+      const NavigationButton = () => {
+           return( <UiButton hasTVPreferredFocus={false} title={'Zu Ihrer Termin Bestätigung'} navigateTo={'EndeAbschlussstrecke'}></UiButton>);
+      }
 
     return (
         <FocusContext active={active}>
@@ -45,23 +83,14 @@ function AbschlussstreckeScreen() {
            Jetz bequem einen Termin mit Ihrem Bankberater vereinbaren!
            </UiText>
            </View>
-           <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.black,false,60)} >
-           <View style={styles.calendarcontainer}>
-
-           <DateTimePickerModal isVisible={isDatePickerVisible} mode="datetime"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}/>
-           </View>
-           </TouchableNativeFeedback>
+           {isDatePickerVisible ? <DatePicker/> : null}
            <View style={styles.cardcontainer}>
 
            <UiCard image={require("../assets/pexels-thirdman-5058925.jpg")} subTitle={'John Doe'} title={'Ihr Bankberater'}/>
            </View>
-           <View style={styles.backbuttoncontainer}>
-               <UiButton hasTVPreferredFocus={false} title={'Zurück'} navigateTo={'Menu'}></UiButton>
-           </View>
+        
            <View style={styles.continuebuttoncontainer}>
-               <UiButton hasTVPreferredFocus={true} title={'Weiter'} navigateTo={'EndeAbschlussstrecke'}></UiButton>
+               {isDatePicked ? <NavigationButton/> : <DatePickerButton/>}
            </View>
        </View>
         </FocusContext>
@@ -81,7 +110,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         position:'absolute',
-        left: 200,
+        left: '45%',
         top: 100
     },
     container: {
@@ -110,6 +139,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 450,
         left:500,
+    },
+    focusedbutton:{
+        backgroundColor: colors.secondary,
+        borderRadius: 25,
+        justifyContent: "center",
+        alignItems:"center",
+        padding: 15, 
+        width: "30%"
+
     },
     title:{
         color: colors.primary,
