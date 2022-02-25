@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { FocusContext } from 'react-native-tvfocus';
 import {  useIsFocused } from '@react-navigation/native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment';
+import 'moment/locale/de';
 
 import colors from '../config/colors';
 import UiSideBar from '../components/UiSideBar';
@@ -33,7 +35,9 @@ function AbschlussstreckeScreen() {
       };
     
       const handleConfirm = (date) => {
-        setDate(date);
+        moment.locale();
+        const formattedDate = moment(date).format('LLL');  
+        setDate(formattedDate);
         hideDatePicker();
         setDatePicked(true);
         console.log(date);
