@@ -1,5 +1,6 @@
-import React from 'react';
-import { StyleSheet,View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import { StyleSheet,View, Dimensions} from 'react-native';
+import { Video,AVPlaybackStatus } from 'expo-av';
 import {useIsFocused} from '@react-navigation/native';
 import { FocusContext } from 'react-native-tvfocus';
 
@@ -11,14 +12,23 @@ import UiSideBar from '../components/UiSideBar';
 
 function MenuScreen() {
  
-const active = useIsFocused();
+
+const [videoStatus, setVideoStatus] = useState({});
+const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('window');
+
 
     
 
     return (
-      <FocusContext active={active}>
+      
 
       <View style={styles.container}>
+        
+      <View style= {styles.videoContainer}>
+
+      <Video rate={1.0} volume={1.0} isMuted={false} resizeMode="cover" shouldPlay isLooping style={{width:width , height:height}} shouldPlay source={{uri: 'https://cdn.dev.dam.union-investment.de/_spielwiese/original/1599_TVC_2_30_Handy_Fitness_Mofa_Nachhaltig_CL_16_9_R128.mp4'}}/>     
+      </View>
         
 
         
@@ -26,7 +36,7 @@ const active = useIsFocused();
         <UiSideBar/>
         
       </View>
-      </FocusContext>
+      
         
     );
 }
@@ -39,18 +49,17 @@ const styles = StyleSheet.create({
       justifyContent:"center"
       
     },
-    webView:{
+    videoContainer:{
+      position:"absolute",
+      top: 0,
+      left: 200,
+      flex:1,
+      
       
       
       
     },
-    webViewContainer:{
-      position:"absolute",
-      top: 0,
-      left:250,
-      flex:1,
-
-    }
+   
   });
 
 export default MenuScreen;
