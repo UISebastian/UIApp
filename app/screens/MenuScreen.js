@@ -18,6 +18,7 @@ const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('window');
 
 
+
     
 
     return (
@@ -27,7 +28,7 @@ const {height} = Dimensions.get('window');
         
       <View style= {styles.videoContainer}>
 
-      <Video rate={1.0} volume={1.0} isMuted={false} resizeMode="cover" shouldPlay isLooping style={{width:width , height:height}} shouldPlay source={{uri: 'https://cdn.dev.dam.union-investment.de/_spielwiese/original/1599_TVC_2_30_Handy_Fitness_Mofa_Nachhaltig_CL_16_9_R128.mp4'}}/>     
+      <Video rate={1.0} volume={1.0} isMuted={false}  shouldPlay isLooping style={{width:width , height:height}}  shouldPlay source={{uri: 'https://cdn.dev.dam.union-investment.de/_spielwiese/original/1599_TVC_2_30_Handy_Fitness_Mofa_Nachhaltig_CL_16_9_R128.mp4'}}/>     
       </View>
         
 
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     videoContainer:{
       position:"absolute",
       top: 0,
-      left: 200,
+      left: 0,
       flex:1,
       
       
