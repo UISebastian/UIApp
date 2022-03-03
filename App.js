@@ -11,6 +11,7 @@ import AbschlussstreckeScreen from './app/screens/AbschlussstreckeScreen';
 import BeratungsScreen from './app/screens/BeratungsScreen';
 import EndeAbschlussstreckeScreen from './app/screens/EndeAbschlussstreckeScreen';
 import PlzTextInputScreen from './app/screens/PlzTextInputScreen';
+import DepotScreen from './app/screens/DepotScreen';
 
 
 
@@ -29,6 +30,7 @@ export default function App() {
        <Stack.Screen name ='Beratung' options={{headerShown:false}}  component={BeratungsScreen}/>
        <Stack.Screen name= 'EndeAbschlussstrecke' options={{headerShown:false}} component={EndeAbschlussstreckeScreen}/>
        <Stack.Screen name='Plz' options={{headerShown:false}} component={PlzTextInputScreen}/>
+       <Stack.Screen name='Depot' options={{headerShown:false}} component={DepotScreen}/>
      </Stack.Navigator>
     </NavigationContainer>
   );
