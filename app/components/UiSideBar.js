@@ -10,6 +10,7 @@ import colors from '../config/colors';
 import menuXml from '../assets/Xml/menuXml';
 import leftArrowXml from '../assets/Xml/leftArrowXml';
 import SideBarButton from './Buttons/SideBarButton';
+import sparschweinMitEuroXML from '../assets/Xml/sparschweinMitEuro';
 
 const DATA =[{
     id: 0,
@@ -51,6 +52,19 @@ const DATA =[{
         alignContent:"center"
     },
     xml: telefonhoererXML
+},
+{
+    id:3, 
+    text:"Ihr Depot",
+    navigateTo:'Depot',
+    style: {
+
+        width:130,
+        height:50,
+        left: 20,
+        alignContent:"center"
+    },
+    xml: sparschweinMitEuroXML 
 },
 ];
 
