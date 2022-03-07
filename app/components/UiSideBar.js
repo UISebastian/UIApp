@@ -80,11 +80,7 @@ const FOOTER_DATA =[
         text:"Impressum",
         navigateTo:'Impressum'
     },
-    {
-        id:1,
-        text:"Datenschutz",
-        navigateTo:'Datenschutz'
-    },
+  
 ];
 
 const Item = ({item, onPress}) => { 
@@ -132,7 +128,7 @@ const footerItem = ({item}) => {
 const footerComponent = () => {
     return(
         
-    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,20)}>
+    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,20)} onPress={() => navigation.navigate('Impressum')}>
         <FlatList contentContainerStyle={styles.footerComponent}  data={FOOTER_DATA}
         renderItem={footerItem}
         keyExtractor={(item) => item.id}
@@ -153,6 +149,7 @@ const navigationView = () => (
         initialNumToRender={DATA.length}
         ListFooterComponent={footerComponent}
         ListFooterComponentStyle={styles.footerComponent}
+        
         />
     </TouchableNativeFeedback>
 

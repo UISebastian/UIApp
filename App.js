@@ -33,6 +33,7 @@ export default function App() {
        <Stack.Screen name= 'EndeAbschlussstrecke' options={{headerShown:false}} component={EndeAbschlussstreckeScreen}/>
        <Stack.Screen name='Plz' options={{headerShown:false}} component={PlzTextInputScreen}/>
        <Stack.Screen name='Depot' options={{headerShown:false}} component={DepotScreen}/>
+       <Stack.Screen name='Impressum' options={{headerShown:false}} component={ImpressumScreen}/>
      </Stack.Navigator>
     </NavigationContainer>
   );
