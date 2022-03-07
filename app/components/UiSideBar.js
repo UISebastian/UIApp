@@ -11,6 +11,7 @@ import menuXml from '../assets/Xml/menuXml';
 import leftArrowXml from '../assets/Xml/leftArrowXml';
 import SideBarButton from './Buttons/SideBarButton';
 import sparschweinMitEuroXML from '../assets/Xml/sparschweinMitEuro';
+import UiText from './UiText';
 
 const DATA =[{
     id: 0,
@@ -73,9 +74,37 @@ const DATA =[{
 },
 ];
 
-const Item = ({item, onPress}) => (
-    <SideBarButton text={item.text} style={item.style} xml={item.xml} onPress={onPress}/>
-);
+const FOOTER_DATA =[
+    {
+        id:0,
+        text:"Impressum",
+        navigateTo:'Impressum'
+    },
+    {
+        id:1,
+        text:"Datenschutz",
+        navigateTo:'Datenschutz'
+    },
+];
+
+const Item = ({item, onPress}) => { 
+    
+
+   return( <SideBarButton text={item.text} style={item.style} xml={item.xml} onPress={onPress}/>);
+    
+    
+
+};
+
+const Fitem = ({item, onPress}) => {
+    return(
+        <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.secondary,false,20)} onPress={onPress}>
+            <UiText style={{fontSize: 10}}>
+                {item.text}
+            </UiText>
+        </TouchableNativeFeedback>
+    );
+}
 
 function UiSideBar() {
 const navigation = useNavigation();
@@ -93,12 +122,38 @@ const renderItem = ({item}) => {
     );
 };
 
+const footerItem = ({item}) => {
+    return(
+        <Fitem item={item} onPress={() => navigation.navigate(item.navigateTo)}/>
+    );
+
+};
+
+const footerComponent = () => {
+    return(
+        
+    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,20)}>
+        <FlatList contentContainerStyle={styles.footerComponent}  data={FOOTER_DATA}
+        renderItem={footerItem}
+        keyExtractor={(item) => item.id}
+        initialNumToRender={FOOTER_DATA.length}
+        />
+    </TouchableNativeFeedback>
+    );
+
+};
+
+
+
 const navigationView = () => (
     <TouchableNativeFeedback>
         <FlatList contentContainerStyle={styles.background}  data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        initialNumToRender={DATA.length}/>
+        initialNumToRender={DATA.length}
+        ListFooterComponent={footerComponent}
+        ListFooterComponentStyle={styles.footerComponent}
+        />
     </TouchableNativeFeedback>
 
 
@@ -145,6 +200,15 @@ const styles = StyleSheet.create({
       position:"absolute",
       left: 20,
       top: 250  
+    },
+    footerComponent:{
+        height: 60,
+        width: "100%",
+        backgroundColor: colors.primary,
+        justifyContent: 'space-evenly',
+        alignItems: 'flex-start',
+        left: 10
+        
     },
 
     iconcontainer:{

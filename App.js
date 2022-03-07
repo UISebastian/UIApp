@@ -12,6 +12,8 @@ import BeratungsScreen from './app/screens/BeratungsScreen';
 import EndeAbschlussstreckeScreen from './app/screens/EndeAbschlussstreckeScreen';
 import PlzTextInputScreen from './app/screens/PlzTextInputScreen';
 import DepotScreen from './app/screens/DepotScreen';
+import ImpressumScreen from './app/screens/ImpressumScreen';
+import DatenschutzScreen from './app/screens/DatenschutzScreen';
 
 
 

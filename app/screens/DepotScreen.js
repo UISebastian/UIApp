@@ -17,8 +17,7 @@ function DepotScreen(props) {
 const styles = StyleSheet.create({
     background:{
         
-        alignItems:'center',
-        justifyContent:'flex-end',
+        
         flex:1
         
     },

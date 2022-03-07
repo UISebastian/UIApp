@@ -1,0 +1,22 @@
+import React from 'react';
+import WebView from 'react-native-webview';
+import {StyleSheet} from 'react-native';
+
+function DatenschutzScreen() {
+    return (
+        <WebView style={styles.background} source={{uri:"https://www.union-investment.de/startseite/datenschutz"}}>
+            
+        </WebView>
+    );
+}
+const styles = StyleSheet.create({
+    background:{
+        
+        alignItems:'center',
+        justifyContent:'flex-end',
+        flex:1
+        
+    },
+})
+
+export default DatenschutzScreen;
