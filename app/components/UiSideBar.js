@@ -22,13 +22,42 @@ const DATA =[{
         height:50,
         left: 20,
         alignContent:"center",
+        justifyContent:"space-between",
         
         
     },
     xml: sparschweinXML
 },
 {
-    id:1,
+    id:1, 
+    text:"Persönliche Videokonferenz",
+    navigateTo:'',
+    style: {
+        
+        width:130,
+        height:50,
+        left: 20,
+        alignContent:"center",
+        justifyContent:"space-between",
+    },
+    xml: telefonhoererXML
+},
+{
+    id:2, 
+    text:"Ihr Depot",
+    navigateTo:'Depot',
+    style: {
+        
+        width:130,
+        height:50,
+        left: 20,
+        alignContent:"center",
+        justifyContent:"space-between",
+    },
+    xml: sparschweinMitEuroXML 
+},
+{
+    id:3,
     text:"",
     navigateTo:'',
     style:{
@@ -36,35 +65,11 @@ const DATA =[{
         width:50,
         height:50,
         left: 20,
-        alignContent:"center"
+        alignContent:"center",
+        position:"absolute",
+        justifyContent:"space-between",
     },
     xml: leftArrowXml
-},
-{
-    id:2, 
-    text:"Persönliche Videokonferenz",
-    navigateTo:'',
-    style: {
-
-        width:130,
-        height:50,
-        left: 20,
-        alignContent:"center"
-    },
-    xml: telefonhoererXML
-},
-{
-    id:3, 
-    text:"Ihr Depot",
-    navigateTo:'Depot',
-    style: {
-
-        width:130,
-        height:50,
-        left: 20,
-        alignContent:"center"
-    },
-    xml: sparschweinMitEuroXML 
 },
 ];
 
