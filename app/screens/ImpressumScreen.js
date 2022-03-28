@@ -1,12 +1,15 @@
 import React from 'react';
-import WebView from 'react-native-webview';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+
+import UiText from '../components/UiText';
 
 function ImpressumScreen() {
     return (
-        <WebView style={styles.background} source={{uri: "https://www.union-investment.de/startseite/impressum-UIP"}}>
-            
-        </WebView>
+        <View style={styles.background} >
+            <UiText>
+                Impressum
+            </UiText>
+        </View>
     );
 }
 const styles = StyleSheet.create({
