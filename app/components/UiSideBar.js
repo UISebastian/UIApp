@@ -114,6 +114,7 @@ const renderItem = ({item}) => {
         onPress={() =>{ if(item.navigateTo ===''){drawer.current.closeDrawer()}
     else{
         navigation.navigate(item.navigateTo)
+        drawer.current.closeDrawer()
     }}}/>
     );
 };
