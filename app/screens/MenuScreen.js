@@ -28,7 +28,7 @@ const {height} = Dimensions.get('window');
         
       <View style= {styles.videoContainer}>
 
-      <Video rate={1.0} volume={1.0} isMuted={false}  shouldPlay isLooping style={{width:width , height:height}}  shouldPlay source={{uri: 'https://cdn.dev.dam.union-investment.de/_spielwiese/original/1599_TVC_2_30_Handy_Fitness_Mofa_Nachhaltig_CL_16_9_R128.mp4'}}/>     
+      <Video rate={1.0} volume={1.0} isMuted={true}  shouldPlay isLooping style={{width:width , height:height}}  shouldPlay source={{uri: 'https://cdn.dev.dam.union-investment.de/_spielwiese/original/1599_TVC_2_30_Handy_Fitness_Mofa_Nachhaltig_CL_16_9_R128.mp4'}}/>     
       </View>
         
 
