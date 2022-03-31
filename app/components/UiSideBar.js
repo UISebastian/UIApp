@@ -113,8 +113,8 @@ const renderItem = ({item}) => {
         <Item item={item}
         onPress={() =>{ if(item.navigateTo ===''){drawer.current.closeDrawer()}
     else{
-        navigation.navigate(item.navigateTo)
         drawer.current.closeDrawer()
+        navigation.navigate(item.navigateTo)
     }}}/>
     );
 };
