@@ -107,21 +107,37 @@ const navigation = useNavigation();
 const active = useIsFocused(); 
 const drawer = useRef(null);
 const [drawerPosition, setDrawerPosition] = useState("left");
+const [drawerIsActive, setDrawerActive] = useState(false);
+
+const onPress = () => {
+    setDrawerActive(true);
+    drawer.current.openDrawer();
+}
 
 const renderItem = ({item}) => {
     return(
         <Item item={item}
-        onPress={() =>{ if(item.navigateTo ===''){drawer.current.closeDrawer()}
+        onPress={() =>{ if(item.navigateTo ===''){
+            setDrawerActive(false);
+            drawer.current.closeDrawer()}
     else{
         
-        navigation.navigate(item.navigateTo)
+        navigation.push(item.navigateTo)
+        drawer.current.closeDrawer();
+        setDrawerActive(false);
     }}}/>
     );
 };
 
 const footerItem = ({item}) => {
     return(
-        <Fitem item={item} onPress={() => navigation.navigate(item.navigateTo)}/>
+        <Fitem item={item} onPress={() => {
+            
+            navigation.push(item.navigateTo)
+            drawer.current.closeDrawer()
+            setDrawerActive(false);
+        }
+        }/>
     );
 
 };
@@ -129,7 +145,9 @@ const footerItem = ({item}) => {
 const footerComponent = () => {
     return(
         
-    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,20)} onPress={() => navigation.navigate('Impressum')}>
+    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.white,false,20)} onPress={() =>{ navigation.push('Impressum')
+    drawer.current.closeDrawer()
+    setDrawerActive(false)}}>
         <FlatList contentContainerStyle={styles.footerComponent}  data={FOOTER_DATA}
         renderItem={footerItem}
         keyExtractor={(item) => item.id}
@@ -162,7 +180,7 @@ const navigationView = () => (
     return (
         
 
-        <FocusContext active={active}>
+        
             
             <TouchableNativeFeedback>
 
@@ -170,7 +188,7 @@ const navigationView = () => (
             drawerPosition={drawerPosition}
             renderNavigationView={navigationView}>
                 <View style={styles.container}>
-                    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.primary,false,20)} onPress={() => drawer.current.openDrawer()}>
+                    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(colors.primary,false,20)} onPress={onPress}>
                         <View style={styles.iconcontainer}>
                         <SvgXml xml={menuXml} style={styles.icons}/>
                         </View>
@@ -180,7 +198,7 @@ const navigationView = () => (
                 
                 </TouchableNativeFeedback>
        
-        </FocusContext>
+       
         
         
     );
