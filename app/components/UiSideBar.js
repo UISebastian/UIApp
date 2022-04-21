@@ -32,7 +32,7 @@ const DATA =[{
 {
     id:1, 
     text:"Persönliche Videokonferenz",
-    navigateTo:'',
+    navigateTo:'Beratung',
     style: {
         
         width:130,
@@ -113,7 +113,7 @@ const renderItem = ({item}) => {
         <Item item={item}
         onPress={() =>{ if(item.navigateTo ===''){drawer.current.closeDrawer()}
     else{
-        drawer.current.closeDrawer()
+        
         navigation.navigate(item.navigateTo)
     }}}/>
     );

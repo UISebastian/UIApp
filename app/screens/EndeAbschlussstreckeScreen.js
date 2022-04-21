@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height:70,
         position: 'absolute',
         top: 450,
-        left:200,
+        left:330,
     },
     title:{
         color: colors.primary,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
         position: 'absolute',
         top: 25,
-        left: '25%'
+        left: 300
 
     },
     qrCodeContainer:{
